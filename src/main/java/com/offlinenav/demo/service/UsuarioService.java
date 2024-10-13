@@ -32,6 +32,9 @@ public class UsuarioService {
 
         user.setNome(userDetails.getNome());
         user.setEmail(userDetails.getEmail());
+        user.setSenha(userDetails.getSenha());
+        user.setHistoricoViagens(userDetails.getHistoricoViagens());
+        user.setMapasBaixados(userDetails.getMapasBaixados());
 
         return usuarioRepository.save(user);
     }
