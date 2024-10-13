@@ -1,28 +1,59 @@
 package com.offlinenav.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import com.offlinenav.demo.model.UsuarioModel;
+import com.offlinenav.demo.model.Usuario;
 import com.offlinenav.demo.service.UsuarioService;
-import com.offlinenav.demo.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
 
-@Controller
-@RequestMapping("/usuarios")
+@RestController
+@RequestMapping("/api/users")
 public class UsuarioController {
 
     @Autowired
-    private UsuarioRepository UsuarioRepository;
+    private UsuarioService usuarioService;
 
-    @GetMapping("/{id}")
-    public UsuarioModel buscarId(@PathVariable int id) {
-        return service.getUsuario(id);
+    // Obter todos os usuários
+    @GetMapping
+    public List<Usuario> getAllUsers() {
+        return usuarioService.getAllUsers();
     }
-    
-    
+
+    // Obter um usuário pelo ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Usuario> getUserById(@PathVariable Long id) {
+        Optional<Usuario> user = usuarioService.getUserById(id);
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    // Criar um novo usuário
+    @PostMapping
+    public Usuario createUser(@RequestBody Usuario usuario) {
+        return usuarioService.createUser(usuario);
+    }
+
+    // Atualizar um usuário existente
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> updateUser(@PathVariable Long id, @RequestBody Usuario userDetails) {
+        try {
+            Usuario updatedUser = usuarioService.updateUser(id, userDetails);
+            return ResponseEntity.ok(updatedUser);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    // Deletar um usuário
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        usuarioService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
 }
