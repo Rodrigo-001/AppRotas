@@ -3,7 +3,6 @@ package com.offlinenav.demo.model;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Service;
 
 public class Rota {
 
@@ -11,10 +10,10 @@ public class Rota {
     Long id;
     @Getter
     @Setter
-    private String localPartida;
+    String localPartida;
     @Getter
     @Setter
-    private String localDestino;
+    String localDestino;
     @Getter
     private Double tempoEstimado;
     @Getter
@@ -28,5 +27,4 @@ public class Rota {
         this.tempoEstimado = tempoEstimado;
         this.distancia = distancia;
     }
-
 }

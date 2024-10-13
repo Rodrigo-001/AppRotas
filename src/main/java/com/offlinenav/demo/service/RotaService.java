@@ -1,7 +1,6 @@
 package com.offlinenav.demo.service;
 
 import com.offlinenav.demo.model.Rota;
-import com.offlinenav.demo.model.Usuario;
 import com.offlinenav.demo.repository.RotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,12 +26,12 @@ public class RotaService {
         return rotaRepository.save(rota);
     }
 
-    public Rota updateRota(Long id, Rota rota) {
+    public Rota updateRota(Long id, Rota rotaDetails) {
         Rota rota = rotaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        rota.getLocalPartida(Rota.getLocalPartida());
-        rota.setLocalDestino(rota.getLocalDestino());
+        rota.setLocalPartida(rotaDetails.getLocalPartida());
+        rota.setLocalDestino(rotaDetails.getLocalDestino());
 
         return rotaRepository.save(rota);
     }

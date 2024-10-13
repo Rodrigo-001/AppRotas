@@ -37,9 +37,9 @@ public class RotaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Rota> updateRota(@PathVariable Long id, @RequestBody Rota rota) {
+    public ResponseEntity<Rota> updateRota(@PathVariable Long id, @RequestBody Rota rotaDetails) {
         try {
-            Rota updatedRota = rotaService.updateRota(id, rota);
+            Rota updatedRota = rotaService.updateRota(id, rotaDetails);
             return ResponseEntity.ok(updatedRota);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
