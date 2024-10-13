@@ -15,7 +15,7 @@ public class RotaService {
     @Autowired
     private RotaRepository rotaRepository;
 
-    public List<Usuario> getRotas() {
+    public List<Rota> getRotas() {
         return rotaRepository.findAll();
     }
 
@@ -27,7 +27,7 @@ public class RotaService {
         return rotaRepository.save(rota);
     }
 
-    public Usuario updateRota(Long id, Rota rota) {
+    public Rota updateRota(Long id, Rota rota) {
         Rota rota = rotaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -35,5 +35,9 @@ public class RotaService {
         rota.setLocalDestino(rota.getLocalDestino());
 
         return rotaRepository.save(rota);
+    }
+
+    public void deleteRota(Long id) {
+        rotaRepository.deleteById(id);
     }
 }
