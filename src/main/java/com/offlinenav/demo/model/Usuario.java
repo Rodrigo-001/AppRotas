@@ -1,18 +1,20 @@
 package com.offlinenav.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "TB_OFFLINENAV_USUARIO")
-public class Usuario {
+public class Usuario implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Getter
@@ -29,10 +31,12 @@ public class Usuario {
 
     @Getter
     @Setter
+    @JdbcTypeCode(SqlTypes.JSON)
     private List historicoViagens;
 
     @Getter
     @Setter
+    @JdbcTypeCode(SqlTypes.JSON)
     private List mapasBaixados;
 
     public Usuario() {}

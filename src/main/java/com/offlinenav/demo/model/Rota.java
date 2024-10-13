@@ -1,12 +1,19 @@
 package com.offlinenav.demo.model;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
-public class Rota {
+import java.io.Serializable;
+
+@Entity
+@Table(name = "TB_OFFLINENAV_ROTA")
+public class Rota implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @Getter
     @Setter

@@ -1,9 +1,0 @@
-com\offlinenav\demo\repository\UsuarioRepository.class
-com\offlinenav\demo\service\UsuarioService.class
-com\offlinenav\demo\model\Rota.class
-com\offlinenav\demo\model\Usuario.class
-com\offlinenav\demo\service\RotaService.class
-com\offlinenav\demo\repository\RotaRepository.class
-com\offlinenav\demo\demoJavaApplication.class
-com\offlinenav\demo\controller\UsuarioController.class
-com\offlinenav\demo\controller\RotaController.class
