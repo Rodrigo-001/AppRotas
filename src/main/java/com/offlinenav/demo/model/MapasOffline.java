@@ -20,7 +20,7 @@ public class MapasOffline implements Serializable {
 
     @Getter
     @Setter
-    private String coordendaCentro;
+    private String coordenadaCentro;
 
     @Getter
     @Setter

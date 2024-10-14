@@ -30,7 +30,7 @@ public class MapasOfflineService {
         MapasOffline mapas = mapasOfflineRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        mapas.setCoordendaCentro(mapasOfflineDetails.getCoordendaCentro());
+        mapas.setCoordenadaCentro(mapasOfflineDetails.getCoordenadaCentro());
         mapas.setRaioDeAlcance(mapasOfflineDetails.getRaioDeAlcance());
 
         return mapasOfflineRepository.save(mapas);
