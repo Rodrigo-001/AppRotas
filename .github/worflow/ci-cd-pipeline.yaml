@@ -15,7 +15,7 @@ jobs:
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
-          java-version: '11'
+          java-version: '21'
 
       - name: Build with Maven
         run: mvn clean package -DskipTests
@@ -29,7 +29,7 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-          docker tag seu-usuario/seu-app:${{ github.sha }} seu-usuario/seu-app:latest
+          docker tag rodrigoc001/approtas:${{ github.sha }} rodrigoc001/approtas:latest
           docker push seu-usuario/seu-app:latest
 
   deploy-staging:

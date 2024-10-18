@@ -7,6 +7,6 @@ RUN mvn clean package -DskipTests
 # Etapa de runtime
 FROM openjdk:11-jre-slim
 WORKDIR /app
-COPY --from=build /app/target/seu-app.jar /app/seu-app.jar
+COPY --from=build /app/target/demo-1.0.0.jar /app/demo-1.0.0.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app/seu-app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/demo-1.0.0.jar"]
